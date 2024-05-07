@@ -3,15 +3,43 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
-
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
+        {% block stylesheets %}{% endblock %}
+       
+       
     </head>
     <body>
+
+
+
+{# NAVBAR #}
+
+    <nav>
+
+        <div class="logo">
+            <a href="{{ path('app_home') }}"><img src="{{ asset('images/pp_petit.png') }}" alt="logo"></a>
+        </div>
+
+
+        <ul>
+            <li><a href="{{ path('app_players') }}">Nos Joueurs</a></li>
+            <li><a href='https://www.eliminate.fr/categorie-produit/omniscient/'>Boutique</a></li>
+            <li><a href="{{ path('app_events') }}">Calendrier</a></li>
+            <li><a href="{{ path('app_albums') }}">Albums</a></li>
+            <li><a href="{{ path('app_news') }}">News</a></li>
+            <li><a href="{{ path('app_contact') }}">Contact</a></li>
+
+        </ul>
+            
+
+
+
+
+
+
         {% block body %}{% endblock %}
+    
+    
+    
+    
     </body>
 </html>
