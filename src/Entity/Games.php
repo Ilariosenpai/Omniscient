@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\GamesRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: GamesRepository::class)]
@@ -19,8 +21,7 @@ class Games
     #[ORM\Column(length: 255)]
     private ?string $plateform = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $palmares = null;
+    
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     private ?Image $image = null;
@@ -28,10 +29,28 @@ class Games
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     private ?Players $player = null;
 
+    /**
+     * @var Collection<int, Players>
+     */
+    #[ORM\OneToMany(targetEntity: Players::class, mappedBy: 'game')]
+    private Collection $players;
+
+    public function __construct()
+    {
+        $this->players = new ArrayCollection();
+    }
+
+    public function __toString(): string
+    {
+        return $this->name;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
     }
+
+
 
     public function getName(): ?string
     {
@@ -57,17 +76,7 @@ class Games
         return $this;
     }
 
-    public function getPalmares(): ?string
-    {
-        return $this->palmares;
-    }
-
-    public function setPalmares(string $palmares): static
-    {
-        $this->palmares = $palmares;
-
-        return $this;
-    }
+    
 
     public function getImage(): ?Image
     {
@@ -89,6 +98,36 @@ class Games
     public function setPlayer(?Players $player): static
     {
         $this->player = $player;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Players>
+     */
+    public function getPlayers(): Collection
+    {
+        return $this->players;
+    }
+
+    public function addPlayer(Players $player): static
+    {
+        if (!$this->players->contains($player)) {
+            $this->players->add($player);
+            $player->setGame($this);
+        }
+
+        return $this;
+    }
+
+    public function removePlayer(Players $player): static
+    {
+        if ($this->players->removeElement($player)) {
+            // set the owning side to null (unless already changed)
+            if ($player->getGame() === $this) {
+                $player->setGame(null);
+            }
+        }
 
         return $this;
     }

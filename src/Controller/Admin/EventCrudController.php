@@ -25,7 +25,7 @@ class EventCrudController extends AbstractCrudController
             DateField::new('date'),
             TextField::new('adress'),
             TextField::new('lien'),
-            ImageField::new('image')->setUploadDir('/path/to/upload/directory'),
+            // ImageField::new('image')->setUploadDir('/path/to/upload/directory'),
             
             
 

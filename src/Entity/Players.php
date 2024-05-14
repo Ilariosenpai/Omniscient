@@ -22,11 +22,16 @@ class Players
     #[ORM\Column(length: 255)]
     private ?string $pseudo = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $game = null;
+   
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     private ?Image $image = null;
+
+    #[ORM\ManyToOne(inversedBy: 'players')]
+    private ?Games $game = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $palmares = null;
 
     public function getId(): ?int
     {
@@ -69,17 +74,7 @@ class Players
         return $this;
     }
 
-    public function getGame(): ?string
-    {
-        return $this->game;
-    }
-
-    public function setGame(string $game): static
-    {
-        $this->game = $game;
-
-        return $this;
-    }
+   
 
     public function getImage(): ?Image
     {
@@ -89,6 +84,30 @@ class Players
     public function setImage(?Image $image): static
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getGame(): ?Games
+    {
+        return $this->game;
+    }
+
+    public function setGame(?Games $game): static
+    {
+        $this->game = $game;
+
+        return $this;
+    }
+
+    public function getPalmares(): ?string
+    {
+        return $this->palmares;
+    }
+
+    public function setPalmares(string $palmares): static
+    {
+        $this->palmares = $palmares;
 
         return $this;
     }
