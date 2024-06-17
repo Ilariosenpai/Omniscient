@@ -24,6 +24,7 @@ class GamesCrudController extends AbstractCrudController
             TextField::new('name'),
             TextField::new('plateform'),
             
+            
         ];
     }
     

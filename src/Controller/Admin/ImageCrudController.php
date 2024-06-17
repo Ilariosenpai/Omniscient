@@ -20,8 +20,11 @@ class ImageCrudController extends AbstractCrudController
     {
         return [
            
-            TextField::new('title'),
-            TextEditorField::new('description'),
+           
+            
+            TextField::new('url'),
+            TextField::new('alt'),
+
         ];
     }
     

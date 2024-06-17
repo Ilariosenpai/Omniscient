@@ -1,9 +1,43 @@
 {% extends 'base.html.twig' %}
 
+
 {% block title %}Omniscient eSport{% endblock %}
 
 {% block body %}
 
+
+<div class="header">
+    <img class="logoheader"src={{ asset('images/Logo-FullWhite.png') }} alt="Logo Omniscient blanc">
+    <p>Le pouvoir du savoir, la passion du jeu, l'art de la victoire.</p>
+</div>
+
+<section class="about-us">
+    <h2>Qui sommes nous ?</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam varius nisl ac ipsum maximus...</p>
+   <a href="{{ path('app_joinus') }}"> <button>Nous Rejoindre</button></a>
+</section>
+ 
+<section class="trusted-by">
+    <h2>Ils nous font confiance</h2>
+    <img src="path/to/logo1.png" alt="Logo 1">
+    <img src="path/to/logo2.png" alt="Logo 2">
+</section>
+
+<section class="main-games">
+    <h2>Nos principaux jeux</h2>
+    <div class="game-slider">
+        <img src="path/to/game1.png" alt="Game 1">
+        <img src="path/to/game2.png" alt="Game 2">
+    </div>
+</section>
+
+<section class="event-experience">
+    <h2>L'expérience de l'événementiel</h2>
+    <div class="event-gallery">
+        <img src="path/to/event1.png" alt="Event 1">
+        <img src="path/to/event2.png" alt="Event 2">
+    </div>
+</section>
 
 
 
