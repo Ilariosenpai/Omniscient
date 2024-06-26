@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Players;
+use App\Repository\ImageRepository;
 use Doctrine\ORM\Query\Expr\Select;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -28,6 +29,7 @@ class PlayersCrudController extends AbstractCrudController
             TextField::new('pseudo'),
             AssociationField::new('game'),
             TextEditorField::new('palmares'),
+            AssociationField::new('image'),
 
             
         ];
