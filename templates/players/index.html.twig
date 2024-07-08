@@ -17,21 +17,20 @@
 
     
 
-
+<section class="player-display">
 {% for player in players %}
-<div class="flip-card">
-    <div class="flip-card-inner">
-        <div class="flip-card-front">
-            <p class="title">{{player.game}}</p>
-            
+
+        <div class="card">
+        <div class="card-info">
+        <img class="card-avatar" src="images/posts/{{player.image}}"></div>
+        <div class="card-title">{{player.firstname}} <pseudo>"{{player.pseudo}}"</pseudo> {{player.lastname}} </div>
+        <div class="card-subtitle">{{player.game}}</div>
         </div>
-        <div class="flip-card-back">
-            <p class="title">{{player.firstname}} {{player.lastname}}</p>
-            <p>"{{player.pseudo}}"</p>
-        </div>
-    </div>
+        
 </div>
 {% endfor %}
+</section>
+
 
 
 {% endblock %}

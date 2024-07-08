@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PlayersRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PlayersRepository::class)]
@@ -32,6 +34,17 @@ class Players
 
     #[ORM\Column(length: 255)]
     private ?string $palmares = null;
+
+    /**
+     * @var Collection<int, Games>
+     */
+    #[ORM\ManyToMany(targetEntity: Games::class, mappedBy: 'player_id')]
+    private Collection $games;
+
+    public function __construct()
+    {
+        $this->games = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -108,6 +121,33 @@ class Players
     public function setPalmares(string $palmares): static
     {
         $this->palmares = $palmares;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Games>
+     */
+    public function getGames(): Collection
+    {
+        return $this->games;
+    }
+
+    public function addGame(Games $game): static
+    {
+        if (!$this->games->contains($game)) {
+            $this->games->add($game);
+            $game->addPlayerId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGame(Games $game): static
+    {
+        if ($this->games->removeElement($game)) {
+            $game->removePlayerId($this);
+        }
 
         return $this;
     }

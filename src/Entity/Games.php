@@ -35,9 +35,16 @@ class Games
     #[ORM\OneToMany(targetEntity: Players::class, mappedBy: 'game')]
     private Collection $players;
 
+    /**
+     * @var Collection<int, players>
+     */
+    #[ORM\ManyToMany(targetEntity: players::class, inversedBy: 'games')]
+    private Collection $player_id;
+
     public function __construct()
     {
         $this->players = new ArrayCollection();
+        $this->player_id = new ArrayCollection();
     }
 
     public function __toString(): string
@@ -128,6 +135,30 @@ class Games
                 $player->setGame(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, players>
+     */
+    public function getPlayerId(): Collection
+    {
+        return $this->player_id;
+    }
+
+    public function addPlayerId(players $playerId): static
+    {
+        if (!$this->player_id->contains($playerId)) {
+            $this->player_id->add($playerId);
+        }
+
+        return $this;
+    }
+
+    public function removePlayerId(players $playerId): static
+    {
+        $this->player_id->removeElement($playerId);
 
         return $this;
     }

@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Album;
 use App\Entity\Event;
 use App\Entity\Games;
 use App\Entity\Image;
@@ -52,6 +53,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Image', 'fa fa-image', Image::class);
         yield MenuItem::linkToCrud('News', 'fas fa-list', News::class);
         yield MenuItem::linkToCrud('Players', 'fa fa-user', Players::class);
+        yield MenuItem::linkToCrud('Albums', 'fa fa-user', Album::class);
 
         // yield MenuItem::linkToUrl('Back to the website', 'fas fa-home', '/');
        

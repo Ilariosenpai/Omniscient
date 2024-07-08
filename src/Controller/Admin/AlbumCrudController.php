@@ -22,7 +22,7 @@ class AlbumCrudController extends AbstractCrudController
     {
         return [
             
-            TextField::new('title'),
+            TextField::new('name'),
             DateField::new('date'),
             AssociationField::new('image'),
             
