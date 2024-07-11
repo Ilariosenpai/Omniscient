@@ -38,8 +38,17 @@ class RegistrationController extends AbstractController
                 )
             );
 
+
+            $user->setRoles(['ROLE_USER']);
+            $user->setVerified(false);
+            $user->setStaff(false);
+            $user->setAmoutDonated(0);
+
             $entityManager->persist($user);
             $entityManager->flush();
+
+
+            
 
             // generate a signed url and email it to the user
             $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,

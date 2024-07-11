@@ -4,7 +4,7 @@ body, html {
     font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: white;
     background: rgb(2,0,36);
-background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(81,69,138,1) 100%);
+    background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(81,69,138,1) 100%);
 
 
 }
@@ -15,8 +15,7 @@ nav {
     display: flex;
     justify-content: center;
     position: fixed;
-    z-index: 2;
-    
+    z-index: 3;
     
     
 }
@@ -28,14 +27,13 @@ nav {
 
 
 .background {
-    background-image: url('../images/image-b1f43567079d69a083bef685746ecfd7.webp'); /* Assurez-vous que le chemin est correct */
+    background-image: url('../images/Banniere.png'); /* Assurez-vous que le chemin est correct */
+    background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
+    background-position:center;
     width: 100%;
     height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    
     align-items: center;
     color: white;
     text-align: center;
@@ -48,9 +46,13 @@ nav {
 }
 
 .content {
-    z-index: 1;
+    z-index: 9999;
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+ 
+    height: 100%;
     
-     /* Ajuster en fonction de la hauteur de la barre de navigation */
 }
 
 .content h1 {
@@ -87,103 +89,3 @@ nav {
 
 
 
-
-.card {
-    width: 190px;
-    height: 254px;
-    background: #f5f5f5;
-    padding: 2rem 1.5rem;
-    transition: box-shadow .3s ease, transform .2s ease;
-   }
-   
-   .card-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition: transform .2s ease, opacity .2s ease;
-   }
-   
-   /*Image*/
-   .card-avatar {
-    --size: 60px;
-    background: linear-gradient(to top, #f1e1c1 0%, #fcbc97 100%);
-    width: var(--size);
-    height: var(--size);
-    border-radius: 50%;
-    transition: transform .2s ease;
-    margin-bottom: 1rem;
-   }
-   
-   
-   /*Card footer*/
-   .card-social {
-    transform: translateY(200%);
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    opacity: 0;
-    transition: transform .2s ease, opacity .2s ease;
-   }
-   
-   .card-social__item {
-    list-style: none;
-   }
-   
-   .card-social__item svg {
-    display: block;
-    height: 18px;
-    width: 18px;
-    fill: #515F65;
-    cursor: pointer;
-    transition: fill 0.2s ease ,transform 0.2s ease;
-
-   }
-   
-   /*Text*/
-  
-    .card-title {
-        color: #333;
-        font-size: 1.5em;
-        font-weight: 600;
-        line-height: 2rem;
-        text-align: center;
-        justify-content: center;
-    }
-    
-   
-   .card-subtitle {
-    color: #859ba8;
-    font-size: 0.8em;
-    text-align: center;
-    justify-content: center;
-   }
-   
-   /*Hover*/
-   .card:hover {
-    box-shadow: 0 8px 50px #23232333;
-   }
-   
-   .card:hover .card-info {
-    transform: translateY(-5%);
-   }
-   
-  
-   
-   .card-avatar:hover {
-    transform: scale(1.1);
-   }
-
-   pseudo {
-
-    color: #51458A;
-   }
-
-   .player-display {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-top: 2rem;
-   }

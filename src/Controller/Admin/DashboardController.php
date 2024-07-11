@@ -8,13 +8,16 @@ use App\Entity\Games;
 use App\Entity\Image;
 use App\Entity\News;
 use App\Entity\Players;
+use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use Symfony\Bundle\MakerBundle\Doctrine\EntityClassGenerator;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
+// #[IsGranted("ROLE_ADMIN")]
 class DashboardController extends AbstractDashboardController
 {
     #[Route('/admin', name: 'admin')]
@@ -54,6 +57,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('News', 'fas fa-list', News::class);
         yield MenuItem::linkToCrud('Players', 'fa fa-user', Players::class);
         yield MenuItem::linkToCrud('Albums', 'fa fa-user', Album::class);
+        yield MenuItem::linkToCrud('Users', 'fa fa-user', User::class);
 
         // yield MenuItem::linkToUrl('Back to the website', 'fas fa-home', '/');
        
