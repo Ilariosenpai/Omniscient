@@ -5,15 +5,36 @@
 {% block body %}
 <div class="text-center">
     <h1>Albums</h1>
-    <p>Voici les albums de notre équipe.</p>
+    <p>Voici les albums de nos moments marquants.</p>
 
 </div>
 
-<section class="album-display">
+<section class="album-display pt-5 pb-5 ">
     {% for album in albums %}
     <div class="card">
         <div class="card-info">
-            {# <img class="card-avatar" src="images/posts/{{album.image_id}}"> #}
+           {# <!-- Vertically centered modal -->
+
+
+<div class="modal-dialog modal-dialog-centered">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+        <h4 class="modal-title">{{album.name}}</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+        <img class="card-avatar" src="images/posts/{{album.image}}">
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+        </div>
+    </div>
+
+</div> #}
+
+
         </div>
         <div class="card-title">{{album.name}}</div>
         {# <div class="card-subtitle">{{album.date}}</div> #}

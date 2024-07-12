@@ -1,25 +1,59 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}S'inscrire{% endblock %}
 
 {% block body %}
     {% for flash_error in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
 
-    <h1>Register</h1>
+   
 
-    {{ form_errors(registrationForm) }}
 
-    {{ form_start(registrationForm) }}
+<div class="text-center pt-5 pb-5" >
+
+ <h1>We want you !</h1>
+    <p>Rejoignez notre communauté de joueurs passionnés ! </p>
+
+ <div class="pt-2 pb-2">
+
+{{ form_errors(registrationForm) }}
+<div class="pt-2 pb-2">
+    <div class="form-group col-6 offset-3 pt-3 pb-3">
+        {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control', 'placeholder': 'Email'}}) }}
+    </div>
+    <div class="form-group col-6 offset-3 pt-3 pb-3">
+        {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control', 'placeholder': 'Mot de passe'}}) }}
+    </div>
+    <div class="form-group col-6 offset-3 pt-3 pb-3">
+        {{ form_widget(registrationForm.confirmPassword, {'attr': {'class': 'form-control', 'placeholder': 'Confirmez le Mot de passe'}}) }}
+    </div>
+    <div class="form-group col-6 offset-3 pt-3 pb-3">
+        {{ form_widget(registrationForm.firstName, {'attr': {'class': 'form-control', 'placeholder': 'Prénom'}}) }}
+    </div>
+    <div class="form-group col-6 offset-3 pt-3 pb-3">
+        {{ form_widget(registrationForm.lastName, {'attr': {'class': 'form-control', 'placeholder': 'Nom'}}) }}
+    </div>
+</div>
+   
+  {# {{ form_start(registrationForm) }}
         {{ form_row(registrationForm.email) }}
         {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
+            label: 'Mot de passe'
+        }) 
+        }}
+        {{ form_row(registrationForm.confirmPassword, {
+            label: 'Confirmez le Mot de passe'
         }) }}
          {{ form_row(registrationForm.firstName) }}
           {{ form_row(registrationForm.lastName) }}
-        {{ form_row(registrationForm.agreeTerms) }}
 
-        <button type="submit" class="btn">Register</button>
+        </div> #}
+    <div class="pt-5 pb-5">
+        <button type="submit" class="btn btn-dark btn-lg " style="background-color: #51458A;">S'inscrire</button>
+    </div>
     {{ form_end(registrationForm) }}
+    </div> 
+
+
 {% endblock %}
