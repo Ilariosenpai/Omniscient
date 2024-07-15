@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ new.title }}{% endblock %}
+
+{% block body %}
+<div class="container">
+
+
+    <h1 class="text-center pt-5 pb-5">{{ new.title }}</h1>
+
+    <div class="text-center">
+        <img src="{{ asset('images/posts/' ~ new.image) }}" class="img-fluid" alt="{{ new.title }}" style="width: 100px;">
+    </div>
+
+    <p>{{ new.content|raw }}</p>
+
+</div>
+
+    <div class="text-center pt-5 pb-5">
+        <a href="{{ path('news_index') }}" class="btn btn-primary" style="background-color: #51458A;">Retour à la liste des news</a>
+</div>
+
+{% endblock %}

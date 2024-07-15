@@ -9,36 +9,21 @@
 
 </div>
 
-<section class="album-display pt-5 pb-5 ">
-    {% for album in albums %}
-    <div class="card">
+
+<section class="player-display pt-5 pb-5">
+{% for album in albums %}
+
+        <div class="card">
         <div class="card-info">
-           {# <!-- Vertically centered modal -->
-
-
-<div class="modal-dialog modal-dialog-centered">
-
-    <!-- Modal content -->
-    <div class="modal-content">
-        <div class="modal-header">
-        <h4 class="modal-title">{{album.name}}</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        <div class="modal-body">
-        <img class="card-avatar" src="images/posts/{{album.image}}">
-        </div>
-        <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-        </div>
-    </div>
-
-</div> #}
-
-
-        </div>
         <div class="card-title">{{album.name}}</div>
-        {# <div class="card-subtitle">{{album.date}}</div> #}
-    </div>
-    {% endfor %}
+        <div class="card-text">{{album.date|date('d/m/Y')}}</div>
 
+        <div class="card-image">
+            <img src="images/posts/{{ album.image[0].url }}" alt="{{ album.name }}" class="img-fluid" width="100px">
+        </div>
+
+</div>
+{% endfor %}
+
+</section>
 {% endblock %}
