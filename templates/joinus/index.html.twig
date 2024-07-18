@@ -3,18 +3,90 @@
 {% block title %}Hello JoinusController!{% endblock %}
 
 {% block body %}
+
+
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+        
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            text-align: center;
+            padding: 50px 0;
+        }
+        h1, h2 {
+            margin: 20px 0;
+        }
+        .donor-table {
+            width: 100%;
+            margin: 30px 0;
+            border-collapse: collapse;
+        }
+        .donor-table th, .donor-table td {
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+        }
+        .donor-table th {
+            background-color: #f0f0f0;
+        }
+        .donor-table .top-donor {
+            font-weight: bold;
+            background-color: #fff8e1;
+        }
+        .donor-table .second-donor {
+            font-weight: bold;
+            background-color: #f0f8ff;
+        }
+        .donor-table .third-donor {
+            font-weight: bold;
+            background-color: #f9f2ec;
+        }
+        .cta-buttons a {
+            display: inline-block;
+            margin: 10px 5px;
+            padding: 15px 30px;
+            font-size: 16px;
+            color: white;
+            background-color: #007bff;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .cta-buttons a:hover {
+            background-color: #0056b3;
+        }
+    </style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/laragon/www/exosphp/Symfony/Omniscient/Omniscient/src/Controller/JoinusController.php</code></li>
-        <li>Your template at <code>C:/laragon/www/exosphp/Symfony/Omniscient/Omniscient/templates/joinus/index.html.twig</code></li>
-    </ul>
-</div>
+
+
+
+
+<div class="container">
+        <h1>Join us</h1>
+        <h2>Top donateurs</h2>
+        
+        <table class="donor-table">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Montant</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                    <tr class="{% if loop.index == 1 %}top-donor{% elseif loop.index == 2 %}second-donor{% elseif loop.index == 3 %}third-donor{% endif %}">
+                        <td>{{ user.firstName }}</td>
+                        <td>{{ user.amoutDonated }} euros</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h2>Choose your amount:</h2>
+        <div class="cta-buttons">
+            <a href="{{ path('app_joinus_stripe',{'price': 5}) }}">5 euros</a>
+            <a href="{{ path('app_joinus_stripe',{'price': 10}) }}">10 euros</a>
+            <a href="{{ path('app_joinus_stripe',{'price': 20}) }}">20 euros</a>
+        </div>
+    </div>
+
 {% endblock %}

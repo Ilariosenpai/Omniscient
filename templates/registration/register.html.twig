@@ -16,7 +16,8 @@
     <p>Rejoignez notre communauté de joueurs passionnés ! </p>
 
  <div class="pt-2 pb-2">
-
+{{ form_start(registrationForm) }}
+{{ form_row(registrationForm._token) }}
 {{ form_errors(registrationForm) }}
 <div class="pt-2 pb-2">
     <div class="form-group col-6 offset-3 pt-3 pb-3">

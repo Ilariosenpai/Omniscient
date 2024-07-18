@@ -57,4 +57,21 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     //            ->getOneOrNullResult()
     //        ;
     //    }
+
+    /**
+     * Retrieves the first name and amount donated for each user.
+     *
+     * @return array
+     */
+    public function rankUserByAmoutDonated(): array
+    {
+        return $this->createQueryBuilder('u')
+            ->select('u.firstName, u.amoutDonated')
+            ->andWhere('u.amoutDonated > 0')
+            ->orderBy('u.amoutDonated', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+   
+    
 }
