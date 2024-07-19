@@ -26,7 +26,7 @@
 
 <div class="background">
 
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg ">
   <div class="container-fluid col-lg-12">
     
     <a href="{{ path('app_home') }}"><img class="logo" src="{{ asset('images/pp_petit.png') }}" alt="logo"></a>
@@ -34,7 +34,7 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
       <ul class="navbar-nav ">
         <li class="nav-item">
           <a class="nav-link text-white" href="{{ path('app_players') }}">Joueurs</a>
@@ -63,11 +63,17 @@
         </li>
          {% if app.user %}
  <li class="nav-item">
-    <a class="nav-link text-white" href="{{ path('app_logout') }}">Se déconnecter</a>
+    <a class="nav-link text-white" href="{{ path('app_logout') }}"> Déconnexion <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/>
+  <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+</svg></a>
   </li>
    {% else  %} 
    <li class="nav-item">
-    <a class="nav-link text-white" href="{{ path('app_login') }}">Se connecter</a>
+    <a class="nav-link text-white" href="{{ path('app_login') }}">Connexion <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0z"/>
+  <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708z"/>
+</svg></a>
   </li>
        
        {% endif %}
@@ -101,7 +107,7 @@
         <p class="">Fondée en 2023, Omniscient est une association loi 1901 qui a pour but de promouvoir l'esport à travers différents tournois et animations dans la ville de Saint-Etienne et aux alentours</p>
     </div>
     </div>
-    <a href="{{ path('app_joinus') }}"><button type="button" class="btn btn-dark btn-lg" style="background-color: #51458A;"   >Nous Rejoindre</button></a>
+    <a href="{{ path('app_joinus') }}"><button type="button" class="btn btn-dark btn-lg" style="background-color: #51458A;"   >Nous Soutenir</button></a>
     
 
 
@@ -144,21 +150,18 @@
       <img src="{{ asset('images/smash5.jpg') }}" class="d-block w-100" alt="Smash bros ultimate">
       <div class="carousel-caption d-none d-md-block">
         <h5>Smash Bros Ultimate</h5>
-        <p>Some representative placeholder content for the first slide.</p>
       </div>
     </div>
     <div class="carousel-item">
       <img src="{{ asset('images/SF6.png') }}" class="d-block w-100" alt="Street Fighter 6">
       <div class="carousel-caption d-none d-md-block">
         <h5>Street Fighter 6</h5>
-        <p>Some representative placeholder content for the second slide.</p>
       </div>
     </div>
     <div class="carousel-item">
       <img src="{{ asset('images/Tekken8.jpg') }}" class="d-block w-100" alt="Tekken 8">
       <div class="carousel-caption d-none d-md-block">
         <h5>Tekken 8</h5>
-        <p>Some representative placeholder content for the third slide.</p>
       </div>
     </div>
   </div>
@@ -182,13 +185,6 @@
 
 
 
-<section class="event-experience">
-    <h3>L'expérience de l'événementiel</h3>
-    <div class="event-gallery">
-        <img src="path/to/event1.png" alt="Event 1">
-        <img src="path/to/event2.png" alt="Event 2">
-    </div>
-</section>
 
 
 

@@ -21,7 +21,13 @@ nav {
     
 }
 
+.navbar-nav{
 
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+   
+}
 
 
 
@@ -43,8 +49,8 @@ nav {
 }
 
 .logo {
-    width: 100px;
-    
+    width: 50px;
+
 }
 
 .content {

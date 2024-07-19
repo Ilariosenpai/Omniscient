@@ -22,4 +22,18 @@ class AlbumsController extends AbstractController
 
         ]);
     }
+
+    #[Route('/albums/{id}', name: 'albums_show')]
+    public function show(int $id, AlbumRepository $albumRepository): Response
+    {
+        $album = $albumRepository->find($id);
+
+        if (!$album) {
+            throw $this->createNotFoundException('The album does not exist');
+        }
+
+        return $this->render('albums/show.html.twig', [
+            'album' => $album,
+        ]);
+    }
 }

@@ -3,6 +3,91 @@
 {% block title %}Albums{% endblock %}
 
 {% block body %}
+
+<style>
+/* Style du conteneur principal */
+.player-display {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Style des cartes d'album */
+.album-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #ffffff;
+    max-width: 300px;
+    width: 100%;
+}
+
+/* Effet au survol */
+.album-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Style des informations de l'album */
+.album-info {
+    padding: 20px;
+    text-align: center;
+}
+
+/* Titre de l'album */
+.album-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+    color: #51458A; /* Couleur principale du site */
+}
+
+/* Date de l'album */
+.album-date {
+    font-size: 1rem;
+    color: #777; /* Couleur pour le texte secondaire */
+    margin: 10px 0;
+}
+
+/* Image de l'album */
+.album-image {
+    margin-bottom: 15px;
+}
+
+.album-image img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover; /* Ajuste l'image pour qu'elle remplisse le conteneur sans déformation */
+    border-radius: 8px;
+}
+
+/* Bouton de vue d'album */
+.btn-view-album {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ffffff; /* Couleur du texte du bouton */
+    background-color: #51458A; /* Couleur principale du site */
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-view-album:hover {
+    background-color: #40376a; /* Couleur de survol légèrement plus sombre */
+    transform: translateY(-2px); /* Léger effet de survol */
+}
+</style>
+
+
+
+
+
 <div class="text-center">
     <h1>Albums</h1>
     <p>Voici les albums de nos moments marquants.</p>
@@ -11,19 +96,21 @@
 
 
 <section class="player-display pt-5 pb-5">
-{% for album in albums %}
-
-        <div class="card">
-        <div class="card-info">
-        <div class="card-title">{{album.name}}</div>
-        <div class="card-text">{{album.date|date('d/m/Y')}}</div>
-
-        <div class="card-image">
-            <img src="images/posts/{{ album.image[0].url }}" alt="{{ album.name }}" class="img-fluid" width="100px">
+    {% for album in albums %}
+        <div class="album-card">
+            <div class="album-info">
+                <div class="album-title">{{ album.name }}</div>
+                <div class="album-date">{{ album.date|date('d/m/Y') }}</div>
+                <div class="album-image">
+                    <img src="images/posts/{{ album.image[2].url }}" alt="{{ album.name }}" class="img-fluid">
+                </div>
+                <a href="{{ path('albums_show', {'id': album.id}) }}" class="btn-view-album">Voir l'album</a>
+            </div>
         </div>
+    {% endfor %}
+</section>
 
-</div>
-{% endfor %}
+
 
 </section>
 {% endblock %}

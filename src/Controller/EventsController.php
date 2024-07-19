@@ -14,40 +14,41 @@ class EventsController extends AbstractController
     public function index(HttpClientInterface $client): Response
     {
 
-        // $slug = 'smash-ultimate';
+        
         $tourneySlug = 'Omnistrike';
-        $sponsor = 'OMNI';
         $query = <<<GRAPHQL
-                
-                       query PrefixSearchAttendees(\$tourneySlug:String!, \$sponsor: String!) {
-                          tournament(slug: \$tourneySlug) {
-                             id
-                             name
-                             participants(query: {
-                                filter: {
-                                   search: {
-                                      fieldsToSearch: ["prefix"],
-                                      searchString: \$sponsor
-                                   }
-                                }
-                             }) {
-                                nodes {
-                                   id
-                                   gamerTag
-                                }
-                             }
-                          }
-                       },
-                     
-                GRAPHQL;
-
+                        
+            query TournamentsSearch(\$tourneySlug: String!) {
+                tournaments(query: {
+                    perPage: 4, 
+                    filter: {
+                        name: \$tourneySlug
+                    }
+                }) {
+                    nodes {
+                        id
+                        name
+                        slug
+                        startAt
+                        endAt
+                    }
+                }
+            }
+                             
+        GRAPHQL;
+        
         $variables = [
             'tourneySlug' => $tourneySlug,
-            'sponsor' => $sponsor,
         ];
+        
+        
+        
+       
+        
+
 
         $headers = [
-            'Authorization' => 'Bearer c3ba932e04efad083df782b4de022b27'
+            'Authorization' => 'Bearer ' . $_ENV['API_STARTGG'],
         ];
 
         $response = $client->request('POST', 'https://api.start.gg/gql/alpha', [

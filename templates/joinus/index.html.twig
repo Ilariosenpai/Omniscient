@@ -6,87 +6,89 @@
 
 
 <style>
-        
-        .container {
-            width: 80%;
-            margin: 0 auto;
-            text-align: center;
-            padding: 50px 0;
-        }
-        h1, h2 {
-            margin: 20px 0;
-        }
-        .donor-table {
-            width: 100%;
-            margin: 30px 0;
-            border-collapse: collapse;
-        }
-        .donor-table th, .donor-table td {
-            padding: 10px 15px;
-            border: 1px solid #ddd;
-        }
-        .donor-table th {
-            background-color: #f0f0f0;
-        }
-        .donor-table .top-donor {
-            font-weight: bold;
-            background-color: #fff8e1;
-        }
-        .donor-table .second-donor {
-            font-weight: bold;
-            background-color: #f0f8ff;
-        }
-        .donor-table .third-donor {
-            font-weight: bold;
-            background-color: #f9f2ec;
-        }
-        .cta-buttons a {
-            display: inline-block;
-            margin: 10px 5px;
-            padding: 15px 30px;
-            font-size: 16px;
-            color: white;
-            background-color: #007bff;
-            border-radius: 5px;
-            text-decoration: none;
-        }
-        .cta-buttons a:hover {
-            background-color: #0056b3;
-        }
-    </style>
-
-
-
-
-
+    .container {
+        width: 80%;
+        margin: 0 auto;
+        text-align: center;
+       
+    }
+    h1, h2 {
+        margin: 20px 0;
+        color: white;
+    }
+    .donor-table {
+        width: 100%;
+        margin: 30px 0;
+        border-collapse: collapse;
+    }
+    .donor-table th, .donor-table td {
+        padding: 10px 15px;
+        color: black;
+    }
+    .donor-table th {
+        background-color: #51458A;
+        color: white;
+        border: none;
+    }
+    .donor-table td {
+        border: none;
+    }
+    .donor-table .top-donor {
+        font-weight: bold;
+        background-color: #fff8e1;
+    }
+    .donor-table .second-donor {
+        font-weight: bold;
+        background-color: #f0f8ff;
+    }
+    .donor-table .third-donor {
+        font-weight: bold;
+        background-color: #f9f2ec;
+    }
+    .cta-buttons a {
+        display: inline-block;
+        margin: 10px 5px;
+        padding: 15px 30px;
+        font-size: 16px;
+        color: white;
+        background-color: #51458A;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+    .cta-buttons a:hover {
+        background-color: #40324a;
+    }
+</style>
 
 <div class="container">
-        <h1>Join us</h1>
-        <h2>Top donateurs</h2>
-        
-        <table class="donor-table">
-            <thead>
-                <tr>
-                    <th>Nom</th>
-                    <th>Montant</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for user in users %}
-                    <tr class="{% if loop.index == 1 %}top-donor{% elseif loop.index == 2 %}second-donor{% elseif loop.index == 3 %}third-donor{% endif %}">
-                        <td>{{ user.firstName }}</td>
-                        <td>{{ user.amoutDonated }} euros</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+    <h1>Nous soutenir</h1>
+    <p>Vous pouvez soutenir notre projet en faisant un don. Les fonds récoltés nous permettront de continuer à développer notre association et à vous proposer de meilleurs évènements.</p>
 
-        <h2>Choose your amount:</h2>
-        <div class="cta-buttons">
-            <a href="{{ path('app_joinus_stripe',{'price': 5}) }}">5 euros</a>
-            <a href="{{ path('app_joinus_stripe',{'price': 10}) }}">10 euros</a>
-            <a href="{{ path('app_joinus_stripe',{'price': 20}) }}">20 euros</a>
-        </div>
+    <h2>Top donateurs</h2>
+    <table class="donor-table pt-5 pb-5">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Montant</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr class="{% if loop.index == 1 %}top-donor{% elseif loop.index == 2 %}second-donor{% elseif loop.index == 3 %}third-donor{% endif %}">
+                    <td>{{ user.firstName }}</td>
+                    <td>{{ user.amoutDonated }} euros</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Choisissez votre montant:</h2>
+    <div class="cta-buttons pt-5 pb-5">
+        <a href="{{ path('app_joinus_stripe',{'price': 5}) }}">5 euros</a>
+        <a href="{{ path('app_joinus_stripe',{'price': 10}) }}">10 euros</a>
+        <a href="{{ path('app_joinus_stripe',{'price': 20}) }}">20 euros</a>
     </div>
+</div>
+
 
 {% endblock %}
