@@ -3,21 +3,25 @@
 {% block title %}News{% endblock %}
 
 {% block body %}
-<div class="container ">
-    <div class="row">
+<div class="container">
+    <div class="row justify-content-center">
         {% for new in news %}
-            <div class="col-md-3  pt-5 pb-5">
-                <div class="card " style="width: 15rem;">
+            <div class="col-md-4 pt-5 pb-5">
+                <div class="card" style="width: 15rem;">
                     <div class="card-body">
                         <h5 class="card-title">{{ new.title }}</h5>
                         <div class="text-center pt-5">
                             <a href="{{ path('news_show', {'id': new.id}) }}" class="btn btn-primary" style="background-color: #51458A;">En savoir plus</a>
                         </div>
                     </div>
-                    </div>
                 </div>
             </div>
+            {% if loop.index % 3 == 0 %}
+                </div>
+                <div class="row justify-content-center">
+            {% endif %}
         {% endfor %}
     </div>
+</div>
 </div>
 {% endblock %}

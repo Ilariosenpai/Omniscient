@@ -11,6 +11,14 @@
 <div class="text-center pt-5 pb-5" >
 
  <h1>ECHEC !</h1>
+
+
+ <img src="{{ asset('images/cancel.gif') }}" alt="echec" style="width: 200px; height: auto;" class="pt-3 pb-3">
     <p>Votre don n'a pas été pris en compte ! </p>
+
+    <div class="pt-5 pb-5">
+        <a href="{{ path('app_joinus') }}" class="btn btn-dark btn-lg" style="background-color: #51458A;">Réessayer</a>
+
+    </div>
 
 {% endblock %}

@@ -1,20 +1,108 @@
+{# templates/contact/index.html.twig #}
+
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ContactController!{% endblock %}
+
 
 {% block body %}
+
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+/* public/css/contact.css */
+
+form {
+    background-color: #3a2c70;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+form h1 {
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+form label {
+    color: #ffffff;
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1.2em;
+}
+
+form input[type="text"],
+form input[type="email"],
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form textarea:focus {
+    border-color: #6c63ff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(108, 99, 255, 0.5);
+}
+
+form button {
+    background-color: #6c63ff;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+    display: block;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #5548c8;
+}
+/* public/css/contact.css */
+
+.alert {
+    padding: 15px;
+    background-color: #4CAF50; /* Vert */
+    color: white;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.alert-success {
+    background-color: #4CAF50; /* Vert */
+}
+
 </style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/laragon/www/exosphp/Symfony/Omniscient/Omniscient/src/Controller/ContactController.php</code></li>
-        <li>Your template at <code>C:/laragon/www/exosphp/Symfony/Omniscient/Omniscient/templates/contact/index.html.twig</code></li>
-    </ul>
-</div>
+
+
+    <div class="contact-form-container">
+        <h1 class="text-center">Contactez-nous !</h1>
+
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success pt-3 pb-3">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        <div class="pb-5 pt-5">
+        {{ form_start(form) }}
+            {{ form_row(form.name) }}
+            {{ form_row(form.email) }}
+            {{ form_row(form.message) }}
+            
+        {{ form_end(form) }}
+        </div>
+    </div>
 {% endblock %}

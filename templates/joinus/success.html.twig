@@ -1,14 +1,22 @@
 {% extends 'base.html.twig' %}
 
 
-{% block title %}Hello JoinusController!{% endblock %}
+{% block title %} Merci !{% endblock %}
 
 {% block body %}
     
-    
-    <h1>Thank you for joining us!</h1>
+    <div class="text-center pt-5 pb-5">
+    <h1>Merci de votre soutien !</h1>
 
 
+<img src="{{ asset('images/remerciments.gif') }}" alt="thankyou" style="width: 200px; height: auto;" class="pt-3 pb-3">
+
+<p>Grâce à vous, nous pouvons continuer à promouvoir l'esport en France !</p>
+    <div class="pt-5 pb-5">
+        <a href="{{ path('app_home') }}" class="btn btn-dark btn-lg" style="background-color: #51458A;">Page d'accueil</a>
+    </div>
+
+</div>
 
 
 
