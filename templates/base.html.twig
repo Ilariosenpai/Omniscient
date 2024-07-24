@@ -76,7 +76,7 @@
 
         {% if app.user and 'ROLE_ADMIN' in app.user.roles %}  
         <li class="nav-item">
-            <a class="nav-link text-white" href="{{ path('admin') }}">Admin</a>
+            <a class="nav-link text-white" href="{{ path('admin')}}" target="_blank" >Admin</a>
         </li>
     {% endif %}
       </ul>

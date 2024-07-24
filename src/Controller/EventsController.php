@@ -20,7 +20,7 @@ class EventsController extends AbstractController
                         
             query TournamentsSearch(\$tourneySlug: String!) {
                 tournaments(query: {
-                    perPage: 4, 
+                    perPage: 3, 
                     filter: {
                         name: \$tourneySlug
                     }

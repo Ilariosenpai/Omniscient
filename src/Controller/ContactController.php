@@ -25,26 +25,25 @@ class ContactController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($contact);
-            $entityManager->flush();
+            
 
             // Créer le message email
             $email = (new Email())
                 ->from($contact->getEmail())
-                ->to('destinataire@example.com') // Remplace par l'adresse email du destinataire
+                ->to('omniscientesportfr@gmail.com') // Remplace par l'adresse email du destinataire
                 ->subject('Nouveau message de contact')
                 ->text(
-                    'Nom: '.$contact->getName()."\n".
-                    'Email: '.$contact->getEmail()."\n\n".
-                    'Message: '.$contact->getMessage()
+                    'test'
                 );
 
+            
+                
             // Envoyer l'email
             $mailer->send($email);
 
             $this->addFlash('success', 'Votre message a été envoyé avec succès.');
 
-            return $this->redirectToRoute('contact');
+            return $this->redirectToRoute('app_contact');
         }
 
         return $this->render('contact/index.html.twig', [
